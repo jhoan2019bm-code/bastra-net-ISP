@@ -1,0 +1,1579 @@
+<!DOCTYPE html>
+<html lang="es"> 
+
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>BASTRA NET</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:'Poppins',sans-serif;
+}
+
+body{
+min-height:100vh;
+background:
+linear-gradient(
+135deg,
+#020617,
+#0f172a,
+#111827
+);
+color:white;
+}
+
+.login{
+width:100%;
+height:100vh;
+display:flex;
+justify-content:center;
+align-items:center;
+padding:20px;
+}
+
+.login-box{
+width:100%;
+max-width:380px;
+background:rgba(255,255,255,.06);
+border:1px solid rgba(255,255,255,.08);
+backdrop-filter:blur(20px);
+border-radius:30px;
+padding:35px;
+box-shadow:0 10px 40px rgba(0,0,0,.4);
+}
+
+.logo{
+text-align:center;
+margin-bottom:30px;
+}
+
+.logo h1{
+font-size:35px;
+background:linear-gradient(90deg,#3b82f6,#06b6d4);
+-webkit-background-clip:text;
+-webkit-text-fill-color:transparent;
+}
+
+.logo p{
+color:#cbd5e1;
+margin-top:8px;
+}
+
+.input{
+width:100%;
+padding:16px;
+border:none;
+border-radius:15px;
+margin-bottom:15px;
+outline:none;
+background:rgba(255,255,255,.08);
+color:white;
+}
+
+.input::placeholder{
+color:#cbd5e1;
+}
+
+.password-box{
+position:relative;
+width:100%;
+margin-bottom:15px;
+}
+
+.password-box .input{
+margin-bottom:0;
+padding-right:55px;
+}
+
+.btn-ver{
+position:absolute;
+right:10px;
+top:50%;
+transform:translateY(-50%);
+border:none;
+background:transparent;
+color:#cbd5e1;
+font-size:18px;
+cursor:pointer;
+}
+
+.btn{
+width:100%;
+padding:16px;
+border:none;
+border-radius:15px;
+background:linear-gradient(90deg,#2563eb,#06b6d4);
+color:white;
+font-size:16px;
+font-weight:600;
+cursor:pointer;
+margin-top:10px;
+}
+
+.btn-reportes{
+width:100%;
+padding:16px;
+border:none;
+border-radius:15px;
+background:linear-gradient(90deg,#9333ea,#7c3aed);
+color:white;
+font-size:16px;
+font-weight:600;
+cursor:pointer;
+margin-bottom:20px;
+}
+
+.app{
+display:none;
+}
+
+.header{
+width:100%;
+padding:20px;
+background:rgba(255,255,255,.05);
+backdrop-filter:blur(20px);
+border-bottom:1px solid rgba(255,255,255,.08);
+position:sticky;
+top:0;
+z-index:100;
+}
+
+.header-content{
+display:flex;
+justify-content:space-between;
+align-items:center;
+}
+
+.logout{
+border:none;
+background:#ef4444;
+color:white;
+padding:10px 15px;
+border-radius:12px;
+cursor:pointer;
+}
+
+.container{
+padding:20px;
+}
+
+.home-grid{
+display:grid;
+grid-template-columns:
+repeat(auto-fit,minmax(250px,1fr));
+gap:20px;
+}
+
+.home-card{
+background:rgba(255,255,255,.06);
+border:1px solid rgba(255,255,255,.08);
+border-radius:25px;
+padding:30px;
+cursor:pointer;
+transition:.3s;
+}
+
+.home-card:hover{
+transform:translateY(-5px);
+}
+
+.home-card span{
+font-size:45px;
+font-weight:700;
+}
+
+.avencer{
+border-left:6px solid #eab308;
+}
+
+.pagado{
+border-left:6px solid #22c55e;
+}
+
+.lista{
+display:grid;
+gap:15px;
+}
+
+.card{
+background:rgba(255,255,255,.06);
+border:1px solid rgba(255,255,255,.08);
+border-radius:20px;
+padding:20px;
+}
+
+.estado{
+display:inline-block;
+margin-top:10px;
+padding:5px 12px;
+border-radius:20px;
+font-size:13px;
+font-weight:600;
+}
+
+.estado-avencer{
+background:#eab308;
+color:black;
+}
+
+.estado-pagado{
+background:#22c55e;
+}
+
+.detalle{
+max-width:1200px;
+margin:auto;
+background:rgba(255,255,255,.06);
+border:1px solid rgba(255,255,255,.08);
+border-radius:30px;
+padding:30px;
+}
+
+.detalle p{
+margin-bottom:12px;
+color:#cbd5e1;
+}
+
+.btn-wsp{
+width:100%;
+padding:16px;
+border:none;
+border-radius:15px;
+background:#22c55e;
+color:white;
+font-size:16px;
+font-weight:600;
+cursor:pointer;
+margin-top:20px;
+}
+
+.btn-back{
+border:none;
+padding:12px 18px;
+border-radius:12px;
+background:#334155;
+color:white;
+cursor:pointer;
+margin-bottom:20px;
+}
+
+.grid-admin{
+display:grid;
+grid-template-columns:
+repeat(auto-fit,minmax(350px,1fr));
+gap:20px;
+margin-top:20px;
+}
+
+.columna{
+background:rgba(255,255,255,.03);
+padding:20px;
+border-radius:20px;
+}
+
+.columna h2{
+margin-bottom:20px;
+}
+
+.buscador-admin{
+margin-bottom:25px;
+}
+
+.reporte-box{
+background:rgba(255,255,255,.05);
+padding:20px;
+border-radius:20px;
+margin-bottom:20px;
+border:1px solid rgba(255,255,255,.08);
+}
+
+.reporte-box h2{
+margin-bottom:15px;
+color:#38bdf8;
+}
+
+.reporte-item{
+padding:10px;
+border-bottom:1px solid rgba(255,255,255,.08);
+}
+
+.link-deuda{
+color:#facc15;
+font-weight:700;
+cursor:pointer;
+text-decoration:underline;
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div class="login" id="login">
+
+<div class="login-box">
+
+<div class="logo">
+
+<h1>📡 BASTRA NET</h1>
+
+<p>
+Sistema Inteligente de Internet
+</p>
+
+</div>
+
+<input
+type="text"
+id="usuario"
+class="input"
+placeholder="Usuario">
+
+<div class="password-box">
+
+<input
+type="password"
+id="password"
+class="input"
+placeholder="Contraseña">
+
+<button
+class="btn-ver"
+onclick="togglePassword()">
+
+👁️
+
+</button>
+
+</div>
+
+<button
+class="btn"
+onclick="ingresar()">
+
+INGRESAR
+
+</button>
+
+</div>
+
+</div>
+
+<div class="app" id="app">
+
+<div class="header">
+
+<div class="header-content">
+
+<h2 id="titulo">
+BASTRA NET
+</h2>
+
+<button
+class="logout"
+onclick="salir()">
+
+Salir
+
+</button>
+
+</div>
+
+</div>
+
+<div
+class="container"
+id="contenido">
+
+</div>
+
+</div>
+
+<script type="module">
+
+import { initializeApp }
+from "https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js";
+
+import {
+getFirestore,
+collection,
+getDocs,
+doc,
+updateDoc
+}
+from
+"https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js";
+
+const firebaseConfig = {
+
+apiKey: "AIzaSyA8E7F8uZ3jy7FGHHi2kdub_RK0YVkiJ6s",
+authDomain: "bastra-isp.firebaseapp.com",
+projectId: "bastra-isp",
+storageBucket: "bastra-isp.firebasestorage.app",
+messagingSenderId: "909742776723",
+appId: "1:909742776723:web:4bfeed6c27b1349d08c866"
+
+};
+
+const app = initializeApp(firebaseConfig);
+
+const db = getFirestore(app);
+
+const ordenMeses = [
+
+"Enero",
+"Febrero",
+"Marzo",
+"Abril",
+"Mayo",
+"Junio",
+"Julio",
+"Agosto",
+"Septiembre",
+"Octubre",
+"Noviembre",
+"Diciembre"
+
+];
+
+/* VER CONTRASEÑA */
+
+window.togglePassword = function(){
+
+const input =
+document.getElementById("password");
+
+if(input.type === "password"){
+
+input.type = "text";
+
+}else{
+
+input.type = "password";
+
+}
+
+}
+
+/* LOGIN */
+
+window.ingresar = async function(){
+
+const usuario =
+document.getElementById("usuario")
+.value
+.toLowerCase()
+.trim();
+
+const password =
+document.getElementById("password")
+.value;
+
+/* ADMIN */
+
+if(
+usuario==="admin"
+&&
+password==="BASTRA.ADMIN"
+){
+
+document.getElementById("login")
+.style.display="none";
+
+document.getElementById("app")
+.style.display="block";
+
+document.getElementById("titulo")
+.innerHTML="ADMINISTRADOR";
+
+cargarAdmin();
+
+return;
+
+}
+
+/* CLIENTE */
+
+if(password!=="BASTRA.NET"){
+
+alert("Contraseña incorrecta");
+return;
+
+}
+
+const snap =
+await getDocs(collection(db,"cliente"));
+
+let encontrado = null;
+
+snap.forEach((docu)=>{
+
+const data = docu.data();
+
+if(
+data.usuario &&
+data.usuario.toLowerCase().trim()
+=== usuario
+){
+
+encontrado = data;
+encontrado.id = docu.id;
+
+}
+
+});
+
+if(!encontrado){
+
+alert("Usuario no encontrado");
+return;
+
+}
+
+window.CLIENTE_ACTUAL = encontrado;
+
+document.getElementById("login")
+.style.display="none";
+
+document.getElementById("app")
+.style.display="block";
+
+document.getElementById("titulo")
+.innerHTML=encontrado.nombre;
+
+cargarInicio();
+
+}
+
+/* CLIENTE HOME */
+
+window.cargarInicio = function(){
+
+const pagos =
+window.CLIENTE_ACTUAL.Pagos;
+
+let avencer = 0;
+let pagados = 0;
+
+ordenMeses.forEach((mes)=>{
+
+if(!pagos[mes]) return;
+
+if(
+pagos[mes].estado==="VENCIDO"
+||
+pagos[mes].estado==="A_VENCER"
+){
+avencer++;
+}
+
+if(
+pagos[mes].estado==="PAGADO"
+){
+pagados++;
+}
+
+});
+
+document.getElementById("contenido")
+.innerHTML=`
+
+<div class="home-grid">
+
+<div
+class="home-card avencer"
+onclick="verMeses('A_VENCER')">
+
+<h2>POR PAGAR</h2>
+
+<span>${avencer}</span>
+
+</div>
+
+<div
+class="home-card pagado"
+onclick="verMeses('PAGADO')">
+
+<h2>PAGADOS</h2>
+
+<span>${pagados}</span>
+
+</div>
+
+</div>
+
+`;
+
+}
+
+/* VER MESES */
+
+window.verMeses = function(estado){
+
+const pagos =
+window.CLIENTE_ACTUAL.Pagos;
+
+let html=`
+
+<button
+class="btn-back"
+onclick="cargarInicio()">
+
+← VOLVER
+
+</button>
+
+<div class="lista">
+
+`;
+
+ordenMeses.forEach((mes)=>{
+
+if(!pagos[mes]) return;
+
+const estadoPago =
+pagos[mes].estado;
+
+if(
+
+(estado==="A_VENCER" &&
+(
+estadoPago==="A_VENCER"
+||
+estadoPago==="VENCIDO"
+))
+
+||
+
+(estado==="PAGADO" &&
+estadoPago==="PAGADO")
+
+){
+
+let clase =
+estado==="PAGADO"
+?
+"estado-pagado"
+:
+"estado-avencer";
+
+html += `
+
+<div
+class="card"
+onclick="verDetalle('${mes}')">
+
+<h2>${mes}</h2>
+
+<p>
+Vence:
+${pagos[mes].vencimiento}
+</p>
+
+<div class="estado ${clase}">
+
+${estado==="PAGADO"
+?
+"PAGADO"
+:
+"POR PAGAR"}
+
+</div>
+
+</div>
+
+`;
+
+}
+
+});
+
+html += `</div>`;
+
+document.getElementById("contenido")
+.innerHTML = html;
+
+}
+
+/* DETALLE CLIENTE */
+
+window.verDetalle = function(mes){
+
+const pago =
+window.CLIENTE_ACTUAL.Pagos[mes];
+
+document.getElementById("contenido")
+.innerHTML = `
+
+<button
+class="btn-back"
+onclick="verMeses(
+'${pago.estado==="PAGADO"
+?
+"PAGADO"
+:
+"A_VENCER"}'
+)">
+
+← VOLVER
+
+</button>
+
+<div class="detalle">
+
+<h1>${mes}</h1>
+
+<p>
+Estado:
+<strong>
+${pago.estado==="PAGADO"
+?
+"PAGADO"
+:
+"POR PAGAR"}
+</strong>
+</p>
+
+<p>
+Vencimiento:
+${pago.vencimiento}
+</p>
+
+<p>
+Monto:
+S/${pago.monto}
+</p>
+
+${
+pago.estado==="PAGADO"
+?
+
+`
+
+<p>
+Fecha de pago:
+<strong>
+${pago.fechaPago || "No registrada"}
+</strong>
+</p>
+
+`
+
+:
+
+``
+
+}
+
+<a
+target="_blank"
+href="https://wa.me/51934847581?text=Hola,%20adjunto%20mi%20comprobante%20del%20mes%20de%20${mes}">
+
+<button class="btn-wsp">
+
+ENVIAR COMPROBANTE
+
+</button>
+
+</a>
+
+</div>
+
+`;
+
+}
+
+/* PANEL ADMIN */
+
+window.cargarAdmin = async function(){
+
+const snap =
+await getDocs(collection(db,"cliente"));
+
+window.CLIENTES_ADMIN = [];
+
+snap.forEach((docu)=>{
+
+const cliente = docu.data();
+
+cliente.id = docu.id;
+
+window.CLIENTES_ADMIN.push(cliente);
+
+});
+
+renderClientesAdmin(window.CLIENTES_ADMIN);
+
+}
+
+/* REPORTES */
+
+window.verReportes = function(){
+
+const clientes = window.CLIENTES_ADMIN;
+
+let usuariosAlDia = [];
+let deudaMeses = {};
+let ingresosMes = {};
+
+const fechaActual = new Date();
+
+/* MES ACTUAL DEL SISTEMA */
+const mesActual = fechaActual.getMonth();
+
+ordenMeses.forEach((mes)=>{
+ingresosMes[mes] = 0;
+});
+
+/* INICIALIZAR DE 1 A 12 */
+
+for(let i = 1; i <= 12; i++){
+
+deudaMeses[i] = [];
+
+}
+
+clientes.forEach((cliente)=>{
+
+let deuda = 0;
+
+/* SOLO CONTAR HASTA EL MES ACTUAL */
+
+for(let i = 0; i <= mesActual; i++){
+
+const mes = ordenMeses[i];
+
+if(!cliente.Pagos[mes]) continue;
+
+const pago = cliente.Pagos[mes];
+
+if(pago.estado !== "PAGADO"){
+deuda++;
+}else{
+ingresosMes[mes] += Number(pago.monto || 0);
+}
+
+}
+
+let estaAlDia = deuda === 0;
+
+if(estaAlDia){
+usuariosAlDia.push(cliente.nombre);
+}
+
+/* GUARDAR CLIENTES SEGÚN DEUDA */
+
+if(deuda >=1 && deuda <=12){
+
+deudaMeses[deuda].push(cliente);
+
+}
+
+});
+
+let html = `
+
+<button
+class="btn-back"
+onclick="cargarAdmin()">
+
+← VOLVER
+
+</button>
+
+<div class="detalle">
+
+<h1 style="margin-bottom:25px;">
+📊 REPORTES GENERALES
+</h1>
+
+<div class="reporte-box">
+
+<h2>
+✅ Usuarios al día
+</h2>
+
+`;
+
+if(usuariosAlDia.length === 0){
+
+html += `<p>No hay usuarios al día.</p>`;
+
+}else{
+
+usuariosAlDia.forEach((nombre)=>{
+
+html += `
+<div class="reporte-item">
+${nombre}
+</div>
+`;
+
+});
+
+}
+
+html += `
+
+</div>
+
+<div class="reporte-box">
+
+<h2>
+📌 Usuarios con deuda
+</h2>
+
+`;
+
+/* SOLO MOSTRAR LOS QUE TENGAN VALOR MAYOR A 0 */
+
+for(let i = 1; i <= 12; i++){
+
+if(deudaMeses[i].length > 0){
+
+html += `
+
+<div class="reporte-item">
+
+Usuarios que deben 
+<span
+class="link-deuda"
+onclick="verUsuariosDeuda(${i})">
+
+${i} mes(es)
+
+</span>
+
+:
+<strong>
+${deudaMeses[i].length}
+</strong>
+
+</div>
+
+`;
+
+}
+
+}
+
+html += `
+
+</div>
+
+<div class="reporte-box">
+
+<h2>
+💰 Ingresos por mes
+</h2>
+
+`;
+
+ordenMeses.forEach((mes,index)=>{
+
+if(index <= mesActual){
+
+html += `
+<div class="reporte-item">
+${mes}: <strong>S/${ingresosMes[mes]}</strong>
+</div>
+`;
+
+}
+
+});
+
+html += `
+
+</div>
+
+</div>
+
+`;
+
+document.getElementById("contenido")
+.innerHTML = html;
+
+}
+
+/* VER USUARIOS CON X DEUDA */
+
+window.verUsuariosDeuda = function(meses){
+
+const clientes =
+window.CLIENTES_ADMIN;
+
+const fechaActual = new Date();
+const mesActual = fechaActual.getMonth();
+
+let html = `
+
+<button
+class="btn-back"
+onclick="verReportes()">
+
+← VOLVER
+
+</button>
+
+<div class="detalle">
+
+<h1 style="margin-bottom:25px;">
+📌 Usuarios que deben ${meses} mes(es)
+</h1>
+
+`;
+
+let encontrados = 0;
+
+clientes.forEach((cliente)=>{
+
+let deuda = 0;
+
+/* SOLO HASTA EL MES ACTUAL */
+
+for(let i = 0; i <= mesActual; i++){
+
+const mes = ordenMeses[i];
+
+if(!cliente.Pagos[mes]) continue;
+
+if(cliente.Pagos[mes].estado !== "PAGADO"){
+deuda++;
+}
+
+}
+
+if(deuda === meses){
+
+encontrados++;
+
+html += `
+
+<div class="card" style="margin-bottom:15px;">
+
+<h2>${cliente.nombre}</h2>
+
+<p>Usuario: ${cliente.usuario}</p>
+
+<p>Teléfono: ${cliente.telefono}</p>
+
+<p>Meses pendientes: ${deuda}</p>
+
+<button
+class="btn"
+onclick="verAdminCliente('${cliente.id}')">
+
+VER CLIENTE
+
+</button>
+
+</div>
+
+`;
+
+}
+
+});
+
+if(encontrados === 0){
+
+html += `
+
+<p>
+No hay usuarios con ${meses} mes(es) de deuda.
+</p>
+
+`;
+
+}
+
+html += `
+
+</div>
+
+`;
+
+document.getElementById("contenido")
+.innerHTML = html;
+
+}
+
+/* RENDER CLIENTES ADMIN */
+
+window.renderClientesAdmin = function(clientes){
+
+let html = `
+
+<button
+class="btn-reportes"
+onclick="verReportes()">
+
+📊 VER REPORTES
+
+</button>
+
+<div class="buscador-admin">
+
+<input
+type="text"
+id="buscadorCliente"
+class="input"
+placeholder="Buscar por nombre o celular">
+
+</div>
+
+<div class="lista">
+
+`;
+
+clientes.forEach((cliente)=>{
+
+const fechaActual = new Date();
+const mesActual = fechaActual.getMonth();
+
+let deuda = 0;
+
+/* SOLO HASTA EL MES ACTUAL */
+
+for(let i = 0; i <= mesActual; i++){
+
+const mes = ordenMeses[i];
+
+if(!cliente.Pagos[mes]) continue;
+
+if(cliente.Pagos[mes].estado!=="PAGADO"){
+deuda++;
+}
+
+}
+
+html += `
+
+<div class="card">
+
+<h2>${cliente.nombre}</h2>
+
+<p>
+Usuario:
+${cliente.usuario}
+</p>
+
+<p>
+Teléfono:
+${cliente.telefono}
+</p>
+
+<p>
+Meses pendientes:
+${deuda}
+</p>
+
+<button
+class="btn"
+onclick="verAdminCliente('${cliente.id}')">
+
+VER CLIENTE
+
+</button>
+
+</div>
+
+`;
+
+});
+
+html += `</div>`;
+
+document.getElementById("contenido")
+.innerHTML = html;
+
+const buscador =
+document.getElementById("buscadorCliente");
+
+buscador.addEventListener("input", function(){
+
+const texto =
+this.value.toLowerCase().trim();
+
+const filtrados =
+window.CLIENTES_ADMIN.filter(cliente => {
+
+const nombre =
+(cliente.nombre || "")
+.toLowerCase();
+
+const telefono =
+(cliente.telefono || "")
+.toString()
+.toLowerCase();
+
+return (
+nombre.includes(texto)
+||
+telefono.includes(texto)
+);
+
+});
+
+renderClientesAdminFiltrados(filtrados);
+
+});
+
+}
+
+/* MOSTRAR CLIENTES FILTRADOS */
+
+window.renderClientesAdminFiltrados =
+function(clientes){
+
+let html = `<div class="lista">`;
+
+clientes.forEach((cliente)=>{
+
+const fechaActual = new Date();
+const mesActual = fechaActual.getMonth();
+
+let deuda = 0;
+
+/* SOLO HASTA EL MES ACTUAL */
+
+for(let i = 0; i <= mesActual; i++){
+
+const mes = ordenMeses[i];
+
+if(!cliente.Pagos[mes]) return;
+
+if(cliente.Pagos[mes].estado!=="PAGADO"){
+deuda++;
+}
+
+}
+
+html += `
+
+<div class="card">
+
+<h2>${cliente.nombre}</h2>
+
+<p>
+Usuario:
+${cliente.usuario}
+</p>
+
+<p>
+Teléfono:
+${cliente.telefono}
+</p>
+
+<p>
+Meses pendientes:
+${deuda}
+</p>
+
+<button
+class="btn"
+onclick="verAdminCliente('${cliente.id}')">
+
+VER CLIENTE
+
+</button>
+
+</div>
+
+`;
+
+});
+
+html += `</div>`;
+
+const lista =
+document.querySelector(".lista");
+
+lista.innerHTML =
+html.replace('<div class="lista">','')
+.replace('</div>','');
+
+}
+
+/* VER CLIENTE ADMIN */
+
+window.verAdminCliente =
+async function(id){
+
+const snap =
+await getDocs(collection(db,"cliente"));
+
+snap.forEach((docu)=>{
+
+if(docu.id===id){
+
+const cliente =
+docu.data();
+
+let porPagar = "";
+let pagados = "";
+
+ordenMeses.forEach((mes)=>{
+
+const pago =
+cliente.Pagos[mes];
+
+if(!pago) return;
+
+if(pago.estado !== "PAGADO"){
+
+porPagar += `
+
+<div class="card" style="margin-bottom:15px;">
+
+<h3 style="margin-bottom:10px;color:#facc15;">
+${mes}
+</h3>
+
+<p>Estado: ${pago.estado}</p>
+
+<p>Monto: S/${pago.monto}</p>
+
+<p>Vence: ${pago.vencimiento}</p>
+
+<input
+type="date"
+id="fecha-${mes}"
+class="input">
+
+<button
+class="btn"
+onclick="
+marcarPagado(
+'${docu.id}',
+'${mes}'
+)
+">
+
+REGISTRAR PAGO
+
+</button>
+
+</div>
+
+`;
+
+}
+
+if(pago.estado==="PAGADO"){
+
+pagados += `
+
+<div class="card" style="margin-bottom:15px;">
+
+<h3 style="margin-bottom:10px;color:#22c55e;">
+${mes}
+</h3>
+
+<p>Estado: PAGADO</p>
+
+<p>Monto: S/${pago.monto}</p>
+
+<p>Vence: ${pago.vencimiento}</p>
+
+<p>
+Fecha de pago:
+${pago.fechaPago || "No registrada"}
+</p>
+
+<button
+class="btn"
+style="background:#ef4444;"
+onclick="
+rehacerPago(
+'${docu.id}',
+'${mes}'
+)
+">
+
+REHACER PAGO
+
+</button>
+
+</div>
+
+`;
+
+}
+
+});
+
+document.getElementById("contenido")
+.innerHTML = `
+
+<button
+class="btn-back"
+onclick="cargarAdmin()">
+
+← VOLVER
+
+</button>
+
+<div class="detalle">
+
+<h1>${cliente.nombre}</h1>
+
+<p>Usuario: ${cliente.usuario}</p>
+
+<p>Teléfono: ${cliente.telefono}</p>
+
+<div class="grid-admin">
+
+<div class="columna">
+
+<h2 style="color:#facc15;">
+POR PAGAR
+</h2>
+
+${porPagar}
+
+</div>
+
+<div class="columna">
+
+<h2 style="color:#22c55e;">
+PAGADOS
+</h2>
+
+${pagados}
+
+</div>
+
+</div>
+
+</div>
+
+`;
+
+}
+
+});
+
+}
+
+/* PAGAR */
+
+window.marcarPagado =
+async function(id,mes){
+
+const fecha =
+document.getElementById(`fecha-${mes}`).value;
+
+if(!fecha){
+
+alert("Seleccione la fecha");
+return;
+
+}
+
+const snap =
+await getDocs(collection(db,"cliente"));
+
+snap.forEach(async(docu)=>{
+
+if(docu.id===id){
+
+const cliente =
+docu.data();
+
+cliente.Pagos[mes].estado =
+"PAGADO";
+
+cliente.Pagos[mes].fechaPago =
+fecha;
+
+await updateDoc(
+doc(db,"cliente",id),
+{
+Pagos: cliente.Pagos
+}
+);
+
+alert("Pago registrado");
+
+verAdminCliente(id);
+
+}
+
+});
+
+}
+
+/* REHACER */
+
+window.rehacerPago =
+async function(id,mes){
+
+const snap =
+await getDocs(collection(db,"cliente"));
+
+snap.forEach(async(docu)=>{
+
+if(docu.id===id){
+
+const cliente =
+docu.data();
+
+cliente.Pagos[mes].estado =
+"VENCIDO";
+
+cliente.Pagos[mes].fechaPago =
+"";
+
+await updateDoc(
+doc(db,"cliente",id),
+{
+Pagos: cliente.Pagos
+}
+);
+
+alert("Pago rehecho");
+
+verAdminCliente(id);
+
+}
+
+});
+
+}
+
+/* SALIR */
+
+window.salir = function(){
+
+window.CLIENTE_ACTUAL = null;
+
+document.getElementById("app")
+.style.display="none";
+
+document.getElementById("login")
+.style.display="flex";
+
+document.getElementById("usuario")
+.value="";
+
+document.getElementById("password")
+.value="";
+
+}
+
+</script>
+
+</body>
+</html>
